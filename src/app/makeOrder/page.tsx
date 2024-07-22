@@ -49,9 +49,8 @@ const OrderManager: React.FC = () => {
   }, [lastOrderDate]);
 
   useEffect(() => {
-    // Fetch orders from the backend when the component mounts
     axios
-      .get("/orders ")
+      .get("http://localhost:5000/orders ")
       .then((response) => {
         setOrders(response.data);
       })
@@ -76,7 +75,7 @@ const OrderManager: React.FC = () => {
     };
 
     axios
-      .post("/orders", orderData)
+      .post("http://localhost:5000/orders", orderData)
       .then((response) => {
         setOrders([...orders, response.data]);
         setOrderCount((prevCount) => prevCount + 1);
